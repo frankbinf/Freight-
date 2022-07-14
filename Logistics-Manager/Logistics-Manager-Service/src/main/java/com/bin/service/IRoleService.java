@@ -14,6 +14,11 @@ public interface IRoleService {
     List<Role> query(Role role) throws Exception;
 
     /**
+     * 根据id查询角色信息
+     */
+    Role queryById(Integer id) throws Exception;
+
+    /**
      * 添加角色信息
      * @param role
      * @return

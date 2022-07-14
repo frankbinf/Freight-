@@ -1,5 +1,6 @@
 com\bin\mapper\UserMapper.class
 com\bin\mapper\RoleMapper.class
+com\bin\mapper\UserRoleMapper.class
 com\bin\mapper\CustomerMapper.class
 com\bin\mapper\OrderDetailMapper.class
 com\bin\mapper\BasicDataMapper.class

@@ -23,6 +23,11 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
+    public Role queryById(Integer id) throws Exception {
+        return mapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public Integer addRole(Role role) throws Exception {
         return mapper.insertSelective(role);
     }

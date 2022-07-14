@@ -1,5 +1,6 @@
 package com.bin.service;
 
+import com.bin.dto.UserDto;
 import com.bin.pojo.User;
 
 import java.util.List;
@@ -32,4 +33,9 @@ public interface IUserService {
      * @return
      */
     Integer deleteUser(Integer id) throws Exception;
+
+    /**
+     * 保存用户以及具有的角色信息
+     */
+    Integer saveOrUpdate(UserDto userDto) throws  Exception;
 }

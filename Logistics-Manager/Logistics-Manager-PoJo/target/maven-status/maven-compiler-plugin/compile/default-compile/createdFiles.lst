@@ -1,3 +1,5 @@
+com\bin\pojo\UserRoleKey.class
+com\bin\dto\UserDto.class
 com\bin\pojo\OrderDetailExample$Criteria.class
 com\bin\pojo\RoleExample.class
 com\bin\pojo\OrderExample$Criterion.class
@@ -15,11 +17,14 @@ com\bin\pojo\CustomerExample$Criterion.class
 com\bin\pojo\OrderDetailExample$Criterion.class
 com\bin\pojo\RoleExample$Criterion.class
 com\bin\pojo\OrderDetail.class
+com\bin\pojo\UserRoleExample$GeneratedCriteria.class
 com\bin\pojo\RoleExample$GeneratedCriteria.class
 com\bin\pojo\CustomerExample$GeneratedCriteria.class
 com\bin\pojo\MenuExample$GeneratedCriteria.class
 com\bin\pojo\MenuExample.class
+com\bin\pojo\UserRoleExample$Criteria.class
 com\bin\pojo\CustomerExample$Criteria.class
+com\bin\pojo\UserRoleExample.class
 com\bin\pojo\UserExample$Criteria.class
 com\bin\pojo\OrderDetailExample$GeneratedCriteria.class
 com\bin\pojo\UserExample$GeneratedCriteria.class
@@ -27,6 +32,7 @@ com\bin\pojo\Customer.class
 com\bin\pojo\Menu.class
 com\bin\pojo\RoleExample$Criteria.class
 com\bin\pojo\User.class
+com\bin\pojo\UserRoleExample$Criterion.class
 com\bin\pojo\BasicDataExample.class
 com\bin\pojo\UserExample$Criterion.class
 com\bin\pojo\MenuExample$Criterion.class
