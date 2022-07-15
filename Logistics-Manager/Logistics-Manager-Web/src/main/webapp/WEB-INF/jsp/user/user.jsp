@@ -112,7 +112,7 @@
 
 
     <div class="pagin">
-        <jsp:include page="/PageBar.jsp"
+        <jsp:include page="/PageBar.jsp"></jsp:include>
         <%--<div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
         <ul class="paginList">
             <li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>
