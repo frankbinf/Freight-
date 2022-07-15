@@ -82,7 +82,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${list}" var="user">
+        <c:forEach items="${pageModel.list}" var="user">
             <tr>
                 <td><input name="" type="checkbox" value="" /></td>
                 <td>
@@ -103,7 +103,8 @@
                 <td>
                         ${user.phone}
                 </td>
-                <td><a href="#" class="tablelink">查看</a>     <a href="#" class="tablelink"> 删除</a></td>
+                <td><a href="/user/userDispatch?id=${user.userId}" class="tablelink">更新</a>
+                    <a href="JavaScript:void(0)" onclick="deleteUser(${user.userId})" class="tablelink"> 删除</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -111,7 +112,8 @@
 
 
     <div class="pagin">
-        <div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
+        <jsp:include page="/PageBar.jsp"
+        <%--<div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
         <ul class="paginList">
             <li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>
             <li class="paginItem"><a href="javascript:;">1</a></li>
@@ -122,7 +124,7 @@
             <li class="paginItem more"><a href="javascript:;">...</a></li>
             <li class="paginItem"><a href="javascript:;">10</a></li>
             <li class="paginItem"><a href="javascript:;"><span class="pagenxt"></span></a></li>
-        </ul>
+        </ul>--%>
     </div>
 
 
@@ -151,6 +153,11 @@
 
 <script type="text/javascript">
     $('.tablelist tbody tr:odd').addClass('odd');
+    function deleteUser(userId){
+        if(window.confirm("确定要删除编号为："+userId+"的记录吗？")){
+            window.location.href = "/user/deleteUser?userId="+userId;
+        }
+    }
 </script>
 
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>

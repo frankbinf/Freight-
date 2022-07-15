@@ -2,7 +2,7 @@ package com.bin.service;
 
 import com.bin.dto.UserDto;
 import com.bin.pojo.User;
-
+import com.github.pagehelper.PageInfo;
 import java.util.List;
 
 public interface IUserService {
@@ -38,4 +38,16 @@ public interface IUserService {
      * 保存用户以及具有的角色信息
      */
     Integer saveOrUpdate(UserDto userDto) throws  Exception;
+
+    /**
+     * 根据id查询用户信息
+     */
+    User queryById(Integer id) throws Exception;
+
+    /**
+     * 根据用户id查询具有的角色id
+     */
+    List<Integer> queryRoleById(Integer userId) throws  Exception;
+
+    PageInfo<User> queryByPage(UserDto userDto) throws Exception;
 }

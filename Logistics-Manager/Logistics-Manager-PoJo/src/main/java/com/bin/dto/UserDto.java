@@ -7,10 +7,9 @@ import java.util.List;
 /**
  * data transport object 数据传输对象
  */
-public class UserDto {
+public class UserDto extends BasePage{
     public User user;
     public List<Integer> roleIds;
-
     public User getUser() {
         return user;
     }
@@ -26,4 +25,6 @@ public class UserDto {
     public void setRoleIds(List<Integer> roleIds) {
         this.roleIds = roleIds;
     }
+
+
 }
