@@ -49,5 +49,16 @@ public interface IUserService {
      */
     List<Integer> queryRoleById(Integer userId) throws  Exception;
 
+    /**
+     * 分页的方法
+     * @param userDto
+     * @return
+     * @throws Exception
+     */
     PageInfo<User> queryByPage(UserDto userDto) throws Exception;
+
+    /**
+     * 认证的方法
+     */
+    User authLogin(String userName);
 }

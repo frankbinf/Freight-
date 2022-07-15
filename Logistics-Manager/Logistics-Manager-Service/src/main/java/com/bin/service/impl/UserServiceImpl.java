@@ -71,7 +71,7 @@ public class UserServiceImpl implements IUserService {
         }else {
             //id为空表示添加
             String salt = UUID.randomUUID().toString();
-            Md5Hash passwordHash = new Md5Hash(user.getPassword(),salt);
+            Md5Hash passwordHash = new Md5Hash(user.getPassword(),salt,1024);
             user.setPassword(passwordHash.toString());
             user.setU1(salt);
             this.addUser(user);
@@ -117,5 +117,16 @@ public class UserServiceImpl implements IUserService {
         List<User> list = this.query(userDto.getUser());
         PageInfo<User> pageInfo = new PageInfo<User>(list);
         return pageInfo;
+    }
+
+    @Override
+    public User authLogin(String userName) {
+        UserExample example = new UserExample();
+        example.createCriteria().andUserNameEqualTo(userName);
+        List<User> list = mapper.selectByExample(example);
+        if(list != null && list.size()>0){
+            return list.get(0);
+        }
+        return null;
     }
 }

@@ -109,10 +109,12 @@
         </c:forEach>
         </tbody>
     </table>
-
-
     <div class="pagin">
         <jsp:include page="/PageBar.jsp"></jsp:include>
+        <form action="/user/query" method="get" id="pager">
+            <input type="hidden" name="pageNum" id="pageNum" value="${pageModel.pageNum}"/>
+            <input type="hidden" name="pageSize" id="pageSize" value="${pageModel.pageSize}"/>
+        </form>
         <%--<div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>
         <ul class="paginList">
             <li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>

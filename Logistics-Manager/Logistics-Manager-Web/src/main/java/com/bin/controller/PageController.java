@@ -12,9 +12,9 @@ public class PageController {
     /**
      * 首页
      */
-    @RequestMapping(value = {"/","/home"})
+    @RequestMapping(value = {"/","/login"})
     public String showMain(){
-        return "main";
+        return "login";
     }
     @RequestMapping("/{path}")
     public String showPage(@PathVariable String path){
