@@ -6,6 +6,8 @@
     <result column="parent_id" property="parentId" jdbcType="INTEGER" />
     <result column="base_name" property="baseName" jdbcType="VARCHAR" />
     <result column="base_desc" property="baseDesc" jdbcType="VARCHAR" />
+    <result column="u1" property="u1" jdbcType="VARCHAR" />
+    <result column="u2" property="u2" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    base_id, parent_id, base_name, base_desc
+    base_id, parent_id, base_name, base_desc, u1, u2
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bin.pojo.BasicDataExample" >
     select
@@ -100,9 +102,9 @@
   </delete>
   <insert id="insert" parameterType="com.bin.pojo.BasicData" >
     insert into t_basicData (base_id, parent_id, base_name, 
-      base_desc)
+      base_desc, u1, u2)
     values (#{baseId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{baseName,jdbcType=VARCHAR}, 
-      #{baseDesc,jdbcType=VARCHAR})
+      #{baseDesc,jdbcType=VARCHAR}, #{u1,jdbcType=VARCHAR}, #{u2,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bin.pojo.BasicData" >
     insert into t_basicData
@@ -119,6 +121,12 @@
       <if test="baseDesc != null" >
         base_desc,
       </if>
+      <if test="u1 != null" >
+        u1,
+      </if>
+      <if test="u2 != null" >
+        u2,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="baseId != null" >
@@ -132,6 +140,12 @@
       </if>
       <if test="baseDesc != null" >
         #{baseDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="u1 != null" >
+        #{u1,jdbcType=VARCHAR},
+      </if>
+      <if test="u2 != null" >
+        #{u2,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +170,12 @@
       <if test="record.baseDesc != null" >
         base_desc = #{record.baseDesc,jdbcType=VARCHAR},
       </if>
+      <if test="record.u1 != null" >
+        u1 = #{record.u1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u2 != null" >
+        u2 = #{record.u2,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +186,9 @@
     set base_id = #{record.baseId,jdbcType=INTEGER},
       parent_id = #{record.parentId,jdbcType=INTEGER},
       base_name = #{record.baseName,jdbcType=VARCHAR},
-      base_desc = #{record.baseDesc,jdbcType=VARCHAR}
+      base_desc = #{record.baseDesc,jdbcType=VARCHAR},
+      u1 = #{record.u1,jdbcType=VARCHAR},
+      u2 = #{record.u2,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +205,12 @@
       <if test="baseDesc != null" >
         base_desc = #{baseDesc,jdbcType=VARCHAR},
       </if>
+      <if test="u1 != null" >
+        u1 = #{u1,jdbcType=VARCHAR},
+      </if>
+      <if test="u2 != null" >
+        u2 = #{u2,jdbcType=VARCHAR},
+      </if>
     </set>
     where base_id = #{baseId,jdbcType=INTEGER}
   </update>
@@ -190,7 +218,9 @@
     update t_basicData
     set parent_id = #{parentId,jdbcType=INTEGER},
       base_name = #{baseName,jdbcType=VARCHAR},
-      base_desc = #{baseDesc,jdbcType=VARCHAR}
+      base_desc = #{baseDesc,jdbcType=VARCHAR},
+      u1 = #{u1,jdbcType=VARCHAR},
+      u2 = #{u2,jdbcType=VARCHAR}
     where base_id = #{baseId,jdbcType=INTEGER}
   </update>
 </mapper>

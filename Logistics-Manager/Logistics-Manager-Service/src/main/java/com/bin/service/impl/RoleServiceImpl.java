@@ -16,6 +16,7 @@ import java.util.List;
 public class RoleServiceImpl implements IRoleService {
     @Autowired
     private RoleMapper mapper;
+
     @Override
     public List<Role> query(Role role) throws Exception {
         RoleExample example = new RoleExample();

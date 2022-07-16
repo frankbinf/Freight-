@@ -1,6 +1,7 @@
 package com.bin.service;
 
 import com.bin.dto.UserDto;
+import com.bin.pojo.Role;
 import com.bin.pojo.User;
 import com.github.pagehelper.PageInfo;
 import java.util.List;
@@ -61,4 +62,11 @@ public interface IUserService {
      * 认证的方法
      */
     User authLogin(String userName);
+
+    /**
+     * 查询用户具有的角色信息
+     */
+    List<Role> queryUserHaveRole(User user) throws Exception;
+
+    List<User> queryUserByRoleName(String roleName ) throws Exception;
 }

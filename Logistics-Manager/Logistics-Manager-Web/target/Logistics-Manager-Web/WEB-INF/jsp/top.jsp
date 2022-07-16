@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,11 +40,15 @@
     <ul>
         <li><span><img src="images/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
         <li><a href="#">关于</a></li>
-        <li><a href="login.html" target="_parent">退出</a></li>
+        <li><a href="/logout.do" target="_parent">退出</a></li>
     </ul>
 
     <div class="user">
-        <span>admin</span>
+        <span>
+            <shiro:authenticated>
+                <shiro:principal property="realName"/>
+            </shiro:authenticated>
+        </span>
         <i>消息</i>
         <b>5</b>
     </div>

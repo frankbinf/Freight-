@@ -1,5 +1,1 @@
-com\bin\controller\UserController.class
-com\bin\realm\MyRealm.class
-com\bin\controller\PageController.class
-com\bin\controller\RoleController.class
-com\bin\controller\LoginController.class
+com\bin\controller\CustomerController.class

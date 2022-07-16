@@ -1,11 +1,10 @@
 package com.bin.service.impl;
 import com.bin.dto.UserDto;
+import com.bin.mapper.RoleMapper;
 import com.bin.mapper.UserMapper;
 import com.bin.mapper.UserRoleMapper;
-import com.bin.pojo.User;
-import com.bin.pojo.UserExample;
-import com.bin.pojo.UserRoleExample;
-import com.bin.pojo.UserRoleKey;
+import com.bin.pojo.*;
+import com.bin.service.IRoleService;
 import com.bin.service.IUserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -21,8 +20,11 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper mapper;
     @Autowired
+    private RoleMapper roleMapper;
+    @Autowired
     private UserRoleMapper userRoleMapper;
-
+    @Autowired
+    private IRoleService roleService ;
     @Override
     public List<User> query(User user) throws Exception {
         UserExample example = new UserExample();
@@ -103,10 +105,12 @@ public class UserServiceImpl implements IUserService {
     public List<Integer> queryRoleById(Integer userId) throws Exception {
         UserRoleExample example = new UserRoleExample();
         example.createCriteria().andUserIdEqualTo(userId);
-        List<UserRoleKey> userRoleKeys = userRoleMapper.selectByExample(example);
+        List<UserRoleKey> roleKeys = userRoleMapper.selectByExample(example);
         List<Integer> ids = new ArrayList<Integer>();
-        for (UserRoleKey userRoleKey : userRoleKeys) {
-            ids.add(userRoleKey.getRoleId());
+        if(roleKeys != null && roleKeys.size()>0) {
+            for (UserRoleKey roleKey : roleKeys) {
+                ids.add(roleKey.getRoleId());
+            }
         }
         return ids;
     }
@@ -126,6 +130,49 @@ public class UserServiceImpl implements IUserService {
         List<User> list = mapper.selectByExample(example);
         if(list != null && list.size()>0){
             return list.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Role> queryUserHaveRole(User user) throws Exception{
+        //查询用户具有的角色id
+        List<Integer> roleIds = this.queryRoleById(user.getUserId());
+        List<Role> roles = null;
+        if(roleIds != null && roleIds.size()>0){
+            roles = new ArrayList<Role>();
+            for (Integer roleId : roleIds) {
+                Role role = roleMapper.selectByPrimaryKey(roleId);
+                roles.add(role);
+            }
+            return roles;
+        }
+        return null;
+    }
+
+    /**
+     * 根据角色名查询用户信息
+     * @param roleName
+     * @return
+     */
+    @Override
+    public List<User> queryUserByRoleName(String roleName) throws Exception{
+        RoleExample roleexample = new RoleExample();
+        roleexample.createCriteria().andRoleNameEqualTo(roleName);
+        List<Role> roles = roleMapper.selectByExample(roleexample);
+        if(roles != null && roles.size()>0){
+            Role role = roles.get(0);
+            UserRoleExample userRoleExample = new UserRoleExample();
+            userRoleExample.createCriteria().andRoleIdEqualTo(role.getRoleId());
+            List<UserRoleKey> userRoleKeys = userRoleMapper.selectByExample(userRoleExample);
+            if(userRoleKeys != null && userRoleKeys.size()>0){
+                List<User> list = new ArrayList<User>();
+                for (UserRoleKey userRoleKey : userRoleKeys) {
+                    User user = this.queryById(userRoleKey.getUserId());
+                    list.add(user);
+                }
+                return list;
+            }
         }
         return null;
     }

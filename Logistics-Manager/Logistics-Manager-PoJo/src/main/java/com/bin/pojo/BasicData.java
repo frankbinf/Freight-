@@ -9,6 +9,10 @@ public class BasicData {
 
     private String baseDesc;
 
+    private String u1;
+
+    private String u2;
+
     public Integer getBaseId() {
         return baseId;
     }
@@ -39,5 +43,21 @@ public class BasicData {
 
     public void setBaseDesc(String baseDesc) {
         this.baseDesc = baseDesc == null ? null : baseDesc.trim();
+    }
+
+    public String getU1() {
+        return u1;
+    }
+
+    public void setU1(String u1) {
+        this.u1 = u1 == null ? null : u1.trim();
+    }
+
+    public String getU2() {
+        return u2;
+    }
+
+    public void setU2(String u2) {
+        this.u2 = u2 == null ? null : u2.trim();
     }
 }

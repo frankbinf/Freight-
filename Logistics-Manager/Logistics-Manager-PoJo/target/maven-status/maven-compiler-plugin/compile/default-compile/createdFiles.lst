@@ -8,6 +8,7 @@ com\bin\pojo\MenuExample$Criteria.class
 com\bin\pojo\OrderExample$GeneratedCriteria.class
 com\bin\pojo\BasicDataExample$Criterion.class
 com\bin\pojo\CustomerExample.class
+com\bin\dto\CustomerDto.class
 com\bin\pojo\OrderExample$Criteria.class
 com\bin\pojo\BasicDataExample$GeneratedCriteria.class
 com\bin\pojo\Order.class

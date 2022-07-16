@@ -2,7 +2,10 @@ package com.bin.controller;
 
 import com.bin.pojo.Role;
 import com.bin.service.IRoleService;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,8 @@ import java.util.List;
 public class RoleController {
     @Autowired
     private IRoleService roleService;
+
+    @RequiresRoles(value = {"administrator","root"},logical = Logical.OR)
     @RequestMapping("/query")
     public String query(Role role , Model model) throws  Exception{
         List<Role> list = roleService.query(role);
@@ -25,6 +30,7 @@ public class RoleController {
      * 处理跳转添加角色页面的请求
      * @return
      */
+    @RequiresRoles(value = {"administrator"},logical = Logical.OR)
     @RequestMapping("/roleDispatch")
     public String jumpPageDispatch(Integer id,Model model) throws Exception{
         if(id != null){
@@ -46,6 +52,7 @@ public class RoleController {
     /**
      * 根据id删除角色信息
      */
+    @RequiresRoles(value = {"administrator","root","user"},logical = Logical.OR)
     @RequestMapping("/deleteById")
     public String deleteById(Integer id) throws Exception{
         System.out.println("要删除的角色id是"+id);

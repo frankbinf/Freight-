@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,7 +33,7 @@
 </head>
 
 <body style="background:#f0f9fd;">
-<div class="lefttop"><span></span>通讯录</div>
+<div class="lefttop"><span></span>业务菜单</div>
 
 <dl class="leftmenu">
 
@@ -41,16 +42,19 @@
             <span><img src="images/leftico01.png" /></span>管理信息
         </div>
         <ul class="menuson">
-            <li><cite></cite><a href="index.html" target="rightFrame">首页模版</a><i></i></li>
-            <li class="active"><cite></cite><a href="user/query" target="rightFrame">用户管理</a><i></i></li>
-            <li><cite></cite><a href="role/query" target="rightFrame">角色管理</a><i></i></li>
-            <li><cite></cite><a href="form.html" target="rightFrame">添加编辑</a><i></i></li>
-            <li><cite></cite><a href="imglist.html" target="rightFrame">图片列表</a><i></i></li>
-            <li><cite></cite><a href="imglist1.html" target="rightFrame">自定义</a><i></i></li>
-            <li><cite></cite><a href="tools.html" target="rightFrame">常用工具</a><i></i></li>
-            <li><cite></cite><a href="filelist.html" target="rightFrame">信息管理</a><i></i></li>
-            <li><cite></cite><a href="tab.html" target="rightFrame">Tab页</a><i></i></li>
-            <li><cite></cite><a href="error.html" target="rightFrame">404页面</a><i></i></li>
+            <li><cite></cite><a href="index.html" target="rightFrame">首页导航</a><i></i></li>
+            <li class="active"><cite></cite><a href="/user/query" target="rightFrame">用户管理</a><i></i></li>
+            <li><cite></cite><a href="/role/query" target="rightFrame">角色管理</a><i></i></li>
+            <li><cite></cite><a href="/basic/query" target="rightFrame">基础数据</a><i></i></li>
+            <shiro:hasAnyRoles name="业务员,操作员">
+                <li><cite></cite><a href="/customer/customerDispatch" target="rightFrame">新增客户</a><i></i></li>
+            </shiro:hasAnyRoles>
+            <shiro:hasAnyRoles name="administrator,业务员,操作员">
+                <li><cite></cite><a href="/customer/query" target="rightFrame">客户管理</a><i></i></li>
+            </shiro:hasAnyRoles>
+            <li><cite></cite><a href="imglist1.html" target="rightFrame">报表管理</a><i></i></li>
+            <li><cite></cite><a href="tools.html" target="rightFrame">财务管理</a><i></i></li>
+            <li><cite></cite><a href="filelist.html" target="rightFrame">常用工具</a><i></i></li>
         </ul>
     </dd>
 
