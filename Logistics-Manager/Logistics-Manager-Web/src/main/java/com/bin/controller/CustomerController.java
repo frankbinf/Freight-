@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -38,5 +39,15 @@ public class CustomerController {
         return "redirect:/customer/query";
     }
 
-
+    @RequestMapping("/deleteCustomer")
+    public String deleteCustomer(Integer id,Model model){
+        customerService.deleteById(id);
+        return "redirect:/customer/query";
+    }
+    @RequestMapping("/checkCustomer")
+    @ResponseBody
+    public String checkCustomer(Integer id){
+        String s = customerService.checkCustomerOrder(id);
+        return s;
+    }
 }

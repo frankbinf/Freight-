@@ -3,6 +3,7 @@ package com.bin.service.impl;
 import com.bin.common.Constant;
 import com.bin.dto.CustomerDto;
 import com.bin.mapper.CustomerMapper;
+import com.bin.mapper.OrderMapper;
 import com.bin.pojo.*;
 import com.bin.service.IBasicDataService;
 import com.bin.service.ICustomerService;
@@ -25,6 +26,8 @@ public class CustomerServiceImpl implements ICustomerService {
     private IUserService userService;
     @Autowired
     private IBasicDataService basicDataService;
+    @Autowired
+    private OrderMapper orderMapper;
 
 
     @Override
@@ -97,5 +100,23 @@ public class CustomerServiceImpl implements ICustomerService {
             return dtos;
         }
         return null;
+    }
+
+    /**
+     * 检查客户是否生成了订单信息
+     * @param id
+     * @return
+     */
+    @Override
+    public String checkCustomerOrder(Integer id) {
+        OrderExample example = new OrderExample();
+        example.createCriteria().andCustomerIdEqualTo(id);
+        int count = orderMapper.countByExample(example);
+        return count > 0 ? "1":"0";
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        customerMapper.deleteByPrimaryKey(id);
     }
 }

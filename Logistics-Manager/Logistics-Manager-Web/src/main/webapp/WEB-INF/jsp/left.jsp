@@ -52,6 +52,9 @@
             <shiro:hasAnyRoles name="administrator,业务员,操作员">
                 <li><cite></cite><a href="/customer/query" target="rightFrame">客户管理</a><i></i></li>
             </shiro:hasAnyRoles>
+            <shiro:hasAnyRoles name="administrator,业务员,操作员">
+                <li><cite></cite><a href="/order/orderDispatch" target="rightFrame">新增订单</a><i></i></li>
+            </shiro:hasAnyRoles>
             <li><cite></cite><a href="imglist1.html" target="rightFrame">报表管理</a><i></i></li>
             <li><cite></cite><a href="tools.html" target="rightFrame">财务管理</a><i></i></li>
             <li><cite></cite><a href="filelist.html" target="rightFrame">常用工具</a><i></i></li>

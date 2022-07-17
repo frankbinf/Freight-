@@ -16,4 +16,8 @@ public interface ICustomerService {
     void saveOrUpdate(Customer customer)throws Exception;
 
     List<CustomerDto> query(Customer customer) throws Exception;
+
+    String checkCustomerOrder(Integer id);
+
+    void deleteById(Integer id);
 }
