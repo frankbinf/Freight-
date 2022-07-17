@@ -25,6 +25,7 @@ com\bin\pojo\MenuExample$GeneratedCriteria.class
 com\bin\pojo\MenuExample.class
 com\bin\pojo\UserRoleExample$Criteria.class
 com\bin\pojo\CustomerExample$Criteria.class
+com\bin\dto\OrderDto.class
 com\bin\pojo\UserRoleExample.class
 com\bin\pojo\UserExample$Criteria.class
 com\bin\pojo\OrderDetailExample$GeneratedCriteria.class

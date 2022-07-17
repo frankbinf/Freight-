@@ -101,7 +101,9 @@
                 <td>${data.address}</td>
                 <td>${data.remark}</td>
                 <td><a href="/customer/customerDispatch?id=${data.customerId}" class="tablelink">更新</a>
-                    <a href="javascript:void(0)" onclick="deleteBasic(${data.baseId})" class="tablelink"> 删除</a></td>
+                    <shiro:hasAnyRoles name="业务员,操作员">
+                    <a href="javascript:void(0)" onclick="deleteCustomer(${data.customerId})" class="tablelink"> 删除</a></td>
+                    </shiro:hasAnyRoles>
             </tr>
         </c:forEach>
         </tbody>
@@ -149,10 +151,21 @@
 
 <script type="text/javascript">
     $('.tablelist tbody tr:odd').addClass('odd');
-
-    function deleteBasic(id){
-        if(window.confirm("确定要删除该记录吗？")) {
-            window.location.href = "/basic/deleteBasic?id="+id;
+    function deleteCustomer(id){
+        //先检查该客户信息是否能删除
+        var request = new XMLHttpRequest();
+        request.open("GET","/customer/checkCustomer?id="+id,true);
+        request.send();
+        request.onreadystatechange = function (){
+            if(request.readyState ==4 && request.status == 200){
+                var msg = request.responseText;
+                console.info(msg)
+                if(msg == '1'){
+                    alert("该客户已经生成订单，无法删除！");
+                }else {
+                    window.location.href = "/customer/deleteCustomer?id="+id;
+                }
+            }
         }
     }
 </script>

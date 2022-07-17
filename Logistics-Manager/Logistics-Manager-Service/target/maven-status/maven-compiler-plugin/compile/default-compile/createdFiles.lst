@@ -1,7 +1,9 @@
 com\bin\service\impl\BasicDataServiceImpl.class
+com\bin\service\IOrderService.class
 com\bin\service\impl\RoleServiceImpl.class
 com\bin\service\ICustomerService.class
 com\bin\service\IRoleService.class
 com\bin\service\IBasicDataService.class
 com\bin\service\IUserService.class
 com\bin\service\impl\CustomerServiceImpl.class
+com\bin\service\impl\OrderServiceImpl.class
